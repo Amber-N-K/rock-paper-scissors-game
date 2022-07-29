@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  
+  <body>
+  
+    <h2>Rock Paper Scissors Game</h2>
+  
+    <p>Type rock, paper, or scissors: </p>
+
+  
+    <button onclick="play()">Play Game</button>
+  
+    <p id="player"></p>
+    <p id="computer"></p>
+    <p id="winner"></p>
+    <p id="count"></p>
+    <p id="tie"></p>
+    <p id="round"></p>
+    <p id="over"></p>
+  
+  
+  <script>
+
+  let userCount = 0;
+  let compCount = 0;
+  let tieCount = 0;
+  let gameRound;
+  let playerSelection;
+  let computerSelection;
+  let score;
+
+  
+
+  function play() {
+    const playerSelection = getPlayerSelection().toLowerCase();
+    const computerSelection = getComputerChoice();
+    const gameSelection = playRound(playerSelection, computerSelection);
+    const gameRound = game()
+  };
+  
+
+  function getPlayerSelection() {
+    playerSelection = prompt(`Type rock, paper, or scissors:`, `rock, paper, scissors`);
+    playerSelection = playerSelection.toLowerCase();
+    console.log(`User selection is:inner ${playerSelection}`);
+    document.getElementById("player").innerHTML = `User selection is: ${playerSelection}`;
+    if ((playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors")) {
+      return playerSelection;
+    }
+    else {
+      alert(`Not a valid answer. Enter rock, paper, or scissors:`);
+    }
+  };
+  
+
+  function getComputerChoice(){
+   let computerArr = ["rock", "paper", "scissors"];
+   computerSelection = computerArr[Math.floor(Math.random() * computerArr.length)];
+    document.getElementById("computer").innerHTML = `Computer selection is: ${computerSelection}`;
+    return computerSelection;
+  };  
+
+  
+  function playRound(playerSelection, computerSelection) {  
+    if ((playerSelection === "rock" && computerSelection === "scissors") || 
+    (playerSelection === "paper" && computerSelection === "rock") || 
+    (playerSelection === "scissors" && computerSelection === "paper")) {
+      userCount++;
+      document.getElementById("winner").innerHTML = `${playerSelection} beats ${computerSelection} - You Win!`;
+      document.getElementById("count").innerHTML = `Your count is: ${userCount} & Computer count is: ${compCount}`;
+      //score = 5 - (userCount + compCount);
+      return score;
+    }
+    else if (playerSelection === computerSelection) {
+      tieCount++;
+      console.log(`A tie`);
+      console.log(`A tie! Tie count is: ${tieCount}`);
+      document.getElementById("winner").innerHTML = `A tie. Keep playing.`;
+      return score;
+    } 
+    else {
+      compCount++;
+      document.getElementById("winner").innerHTML = `${computerSelection} beats ${playerSelection} - You Lose!`;
+      document.getElementById("count").innerHTML =  `Your count is: ${userCount} & Computer count is: ${compCount}`;
+      //score = 5 - (compCount + userCount);
+      return score;
+    }
+  };
+
+
+  function game() {
+  score = 5 - (compCount + userCount);
+  //for (let i = 0; i < 5; i++) {
+    if (score > 1) {
+      console.log(`You have ${score} more games left`);
+      document.getElementById("round").innerHTML = `You have ${score} more games left`;
+      return score;
+    }
+    else if (score === 1) {
+      console.log(`You have 1 more game left`);
+      document.getElementById("round").innerHTML = `You have 1 more game left`;
+      return score;
+    }
+    else {
+      console.log(`Game over! Your count is:  ${userCount} & Computer count is: ${compCount}`);
+      alert(`Game over! \n Your win count is: ${userCount}  \n Computer win count is: ${compCount}`);
+      location.reload();
+    }
+
+};
+
+  </script>
+  
+ </body>
+</html>
+  
+  
