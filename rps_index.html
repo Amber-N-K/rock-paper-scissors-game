@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Rock Paper Scissors Game</title>
+  </head>
+  <body>
+    <section class="section-center">
+      <!-- header -->
+      <header class="game-header">
+        <p class="alert"></p>
+        <h3>Rock Paper Scissors Game</h3>
+        <p class="text">
+          Select a rock, paper, or scissors button. <br> The computer will randomly
+          select one of these options. <br> How many games will you win out of
+          5?
+        </p>
+      </header>
+      <!--Game Buttons -->
+      <nav class="btn-container">
+        <button type="button" class="game-btn" id="rock">rock</button>
+        <button type="button" class="game-btn" id="paper">paper</button>
+        <button type="button" class="game-btn" id="scissors">scissors</button>
+      </nav>
+      <!-- Game Selection -->
+      <section class="game-container">
+        <div class="game-selection">
+          <div class="user">
+            <h4>Your Selection: </h4>
+            <p id="user-selection"></p>
+          </div>
+          <div class="computer">
+            <h4>Computer Selection: </h4>
+            <p id="computer-selection"></p>
+          </div>
+        </div>
+        <div class="winner-section">
+          <div class="left-winner"></div>
+          <div class="winner">
+            <h4>Winner: </h3>
+            <p id="winner-selection"></p>
+          </div>
+          <div class="right-winner"></div>
+        </div>
+        <div class="game-count">
+          <div class="user-count">
+            <h4>You have won: </h4>
+            <p id="user-wins"></p>
+          </div>
+          <div class="computer-count">
+            <h4>Computer has won: </h4>
+            <p id="computer-wins"></p>
+          </div>
+        </div>
+      </section>
+      <!-- Link to trigger modal -->
+      <a href="javascript:void(0);" class="btn btn-primary modal-btn" id="mpopupLink">Clear the Board</a>
+      <!-- Modal popup box -->
+      <footer id="mpopupBox" class="mpopup">
+          <!-- Modal content -->
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">×</span>
+                  <h3 id="result"></h3>
+              </div>
+              <div class="modal-body">
+                  <h4>Play again?</h4>
+                  <p>Are you having fun and want to play 5 more games of rock, paper, scissors? Then click the play again button.</p>
+                  <p>If not, click the exit the game button.</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary modal-btn" value="Reload Page" onClick="document.location.reload(true)">Play Again</button>
+                  <button type="button" class="btn btn-primary modal-btn" onclick="window.close();">Exit the Game</button>
+              </div>
+          </div>
+        </footer>
+    </section>
+    <!-- javascript -->
+    <script src="app.js"></script>
+  </body>
+</html>
